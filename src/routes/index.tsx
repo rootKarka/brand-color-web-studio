@@ -4,7 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { avancePorZona, eventos, terceros } from "@/lib/demo-data";
+import { avancePorZona, terceros } from "@/lib/demo-data";
+import { useEventos } from "@/lib/events-store";
+import { NewEventDialog } from "@/components/new-event-dialog";
+
 import { TrendingUp, Package, Users, AlertCircle, ArrowRight, CalendarPlus, Download } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
@@ -19,6 +22,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Dashboard() {
+  const eventos = useEventos();
+
   const activos = eventos.filter((e) => e.estado === "activo");
   const totalBenef = activos.reduce((a, e) => a + e.beneficiarios, 0);
   const totalEntreg = activos.reduce((a, e) => a + e.entregados, 0);
@@ -34,9 +39,14 @@ function Dashboard() {
           <Button variant="outline" className="gap-2">
             <Download className="h-4 w-4" /> Exportar
           </Button>
-          <Button className="gap-2 bg-primary hover:bg-primary/90">
-            <CalendarPlus className="h-4 w-4" /> Nuevo evento
-          </Button>
+          <NewEventDialog
+            trigger={
+              <Button className="gap-2 bg-primary hover:bg-primary/90">
+                <CalendarPlus className="h-4 w-4" /> Nuevo evento
+              </Button>
+            }
+          />
+
         </>
       }
     >
