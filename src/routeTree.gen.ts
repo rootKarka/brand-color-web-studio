@@ -9,8 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZonasRouteImport } from './routes/zonas'
+import { Route as TercerosRouteImport } from './routes/terceros'
+import { Route as ReportesRouteImport } from './routes/reportes'
+import { Route as JefesRouteImport } from './routes/jefes'
+import { Route as EventosRouteImport } from './routes/eventos'
+import { Route as BeneficiariosRouteImport } from './routes/beneficiarios'
+import { Route as AuditoriaRouteImport } from './routes/auditoria'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ZonasRoute = ZonasRouteImport.update({
+  id: '/zonas',
+  path: '/zonas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TercerosRoute = TercerosRouteImport.update({
+  id: '/terceros',
+  path: '/terceros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportesRoute = ReportesRouteImport.update({
+  id: '/reportes',
+  path: '/reportes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JefesRoute = JefesRouteImport.update({
+  id: '/jefes',
+  path: '/jefes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventosRoute = EventosRouteImport.update({
+  id: '/eventos',
+  path: '/eventos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeneficiariosRoute = BeneficiariosRouteImport.update({
+  id: '/beneficiarios',
+  path: '/beneficiarios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditoriaRoute = AuditoriaRouteImport.update({
+  id: '/auditoria',
+  path: '/auditoria',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +61,130 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auditoria': typeof AuditoriaRoute
+  '/beneficiarios': typeof BeneficiariosRoute
+  '/eventos': typeof EventosRoute
+  '/jefes': typeof JefesRoute
+  '/reportes': typeof ReportesRoute
+  '/terceros': typeof TercerosRoute
+  '/zonas': typeof ZonasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auditoria': typeof AuditoriaRoute
+  '/beneficiarios': typeof BeneficiariosRoute
+  '/eventos': typeof EventosRoute
+  '/jefes': typeof JefesRoute
+  '/reportes': typeof ReportesRoute
+  '/terceros': typeof TercerosRoute
+  '/zonas': typeof ZonasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auditoria': typeof AuditoriaRoute
+  '/beneficiarios': typeof BeneficiariosRoute
+  '/eventos': typeof EventosRoute
+  '/jefes': typeof JefesRoute
+  '/reportes': typeof ReportesRoute
+  '/terceros': typeof TercerosRoute
+  '/zonas': typeof ZonasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auditoria'
+    | '/beneficiarios'
+    | '/eventos'
+    | '/jefes'
+    | '/reportes'
+    | '/terceros'
+    | '/zonas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auditoria'
+    | '/beneficiarios'
+    | '/eventos'
+    | '/jefes'
+    | '/reportes'
+    | '/terceros'
+    | '/zonas'
+  id:
+    | '__root__'
+    | '/'
+    | '/auditoria'
+    | '/beneficiarios'
+    | '/eventos'
+    | '/jefes'
+    | '/reportes'
+    | '/terceros'
+    | '/zonas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuditoriaRoute: typeof AuditoriaRoute
+  BeneficiariosRoute: typeof BeneficiariosRoute
+  EventosRoute: typeof EventosRoute
+  JefesRoute: typeof JefesRoute
+  ReportesRoute: typeof ReportesRoute
+  TercerosRoute: typeof TercerosRoute
+  ZonasRoute: typeof ZonasRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zonas': {
+      id: '/zonas'
+      path: '/zonas'
+      fullPath: '/zonas'
+      preLoaderRoute: typeof ZonasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terceros': {
+      id: '/terceros'
+      path: '/terceros'
+      fullPath: '/terceros'
+      preLoaderRoute: typeof TercerosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reportes': {
+      id: '/reportes'
+      path: '/reportes'
+      fullPath: '/reportes'
+      preLoaderRoute: typeof ReportesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jefes': {
+      id: '/jefes'
+      path: '/jefes'
+      fullPath: '/jefes'
+      preLoaderRoute: typeof JefesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eventos': {
+      id: '/eventos'
+      path: '/eventos'
+      fullPath: '/eventos'
+      preLoaderRoute: typeof EventosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beneficiarios': {
+      id: '/beneficiarios'
+      path: '/beneficiarios'
+      fullPath: '/beneficiarios'
+      preLoaderRoute: typeof BeneficiariosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auditoria': {
+      id: '/auditoria'
+      path: '/auditoria'
+      fullPath: '/auditoria'
+      preLoaderRoute: typeof AuditoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +197,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuditoriaRoute: AuditoriaRoute,
+  BeneficiariosRoute: BeneficiariosRoute,
+  EventosRoute: EventosRoute,
+  JefesRoute: JefesRoute,
+  ReportesRoute: ReportesRoute,
+  TercerosRoute: TercerosRoute,
+  ZonasRoute: ZonasRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
