@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { jefes } from "@/lib/demo-data";
+import { useJefes } from "@/lib/jefes-store";
+import { NewJefeDialog } from "@/components/new-jefe-dialog";
 import { UserPlus, Search, KeyRound, MoreHorizontal } from "lucide-react";
+
 
 export const Route = createFileRoute("/jefes")({
   head: () => ({
@@ -19,16 +21,22 @@ export const Route = createFileRoute("/jefes")({
 });
 
 function JefesPage() {
+  const jefes = useJefes();
   return (
     <AppLayout
       title="Jefes de anexo"
       subtitle="Cuentas de la app móvil, contraseñas y zona asignada"
       actions={
-        <Button className="gap-2 bg-primary hover:bg-primary/90">
-          <UserPlus className="h-4 w-4" /> Nuevo jefe
-        </Button>
+        <NewJefeDialog
+          trigger={
+            <Button className="gap-2 bg-primary hover:bg-primary/90">
+              <UserPlus className="h-4 w-4" /> Nuevo jefe
+            </Button>
+          }
+        />
       }
     >
+
       <Card className="p-4 mb-4 flex flex-wrap gap-3 items-center">
         <div className="relative flex-1 min-w-[240px]">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
