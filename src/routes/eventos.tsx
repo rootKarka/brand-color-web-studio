@@ -5,8 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Input } from "@/components/ui/input";
-import { eventos } from "@/lib/demo-data";
+import { useEventos } from "@/lib/events-store";
+import { NewEventDialog } from "@/components/new-event-dialog";
 import { CalendarPlus, Search, Upload, MoreHorizontal } from "lucide-react";
+
 
 export const Route = createFileRoute("/eventos")({
   head: () => ({
