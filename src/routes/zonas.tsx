@@ -3,7 +3,7 @@ import { AppLayout } from "@/components/app-layout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useZonas, zonasStore } from "@/lib/zonas-store";
+import { useZonas } from "@/lib/zonas-store";
 import { NewZonaDialog } from "@/components/new-zona-dialog";
 import { MapPin, Plus, Edit3, Power } from "lucide-react";
 
