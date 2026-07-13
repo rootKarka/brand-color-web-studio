@@ -21,14 +21,19 @@ export const Route = createFileRoute("/eventos")({
 });
 
 function EventosPage() {
+  const eventos = useEventos();
   return (
     <AppLayout
       title="Eventos / Entregables"
       subtitle="Crea, activa y cierra periodos de entrega de beneficios"
       actions={
-        <Button className="gap-2 bg-primary hover:bg-primary/90">
-          <CalendarPlus className="h-4 w-4" /> Nuevo evento
-        </Button>
+        <NewEventDialog
+          trigger={
+            <Button className="gap-2 bg-primary hover:bg-primary/90">
+              <CalendarPlus className="h-4 w-4" /> Nuevo evento
+            </Button>
+          }
+        />
       }
     >
       <Card className="p-4 mb-4 flex flex-wrap gap-3 items-center">
@@ -46,6 +51,7 @@ function EventosPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {eventos.map((e) => {
+
           const pct = e.beneficiarios ? Math.round((e.entregados / e.beneficiarios) * 100) : 0;
           return (
             <Card key={e.id} className="p-5 hover:shadow-md transition-shadow">
