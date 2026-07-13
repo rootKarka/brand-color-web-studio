@@ -22,6 +22,8 @@ export const Route = createFileRoute("/")({
 });
 
 function Dashboard() {
+  const eventos = useEventos();
+
   const activos = eventos.filter((e) => e.estado === "activo");
   const totalBenef = activos.reduce((a, e) => a + e.beneficiarios, 0);
   const totalEntreg = activos.reduce((a, e) => a + e.entregados, 0);
