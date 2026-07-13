@@ -4,7 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { avancePorZona, eventos, terceros } from "@/lib/demo-data";
+import { avancePorZona, terceros } from "@/lib/demo-data";
+import { useEventos } from "@/lib/events-store";
+import { NewEventDialog } from "@/components/new-event-dialog";
+
 import { TrendingUp, Package, Users, AlertCircle, ArrowRight, CalendarPlus, Download } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
