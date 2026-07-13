@@ -39,9 +39,14 @@ function Dashboard() {
           <Button variant="outline" className="gap-2">
             <Download className="h-4 w-4" /> Exportar
           </Button>
-          <Button className="gap-2 bg-primary hover:bg-primary/90">
-            <CalendarPlus className="h-4 w-4" /> Nuevo evento
-          </Button>
+          <NewEventDialog
+            trigger={
+              <Button className="gap-2 bg-primary hover:bg-primary/90">
+                <CalendarPlus className="h-4 w-4" /> Nuevo evento
+              </Button>
+            }
+          />
+
         </>
       }
     >
