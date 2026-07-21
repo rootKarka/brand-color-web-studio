@@ -19,7 +19,11 @@ export const Route = createFileRoute("/zonas")({
 });
 
 function ZonasPage() {
-  const { zonas } = useZonas();
+  const {
+    data: zonas = [],
+    isLoading,
+    error,
+  } = useZonas();
   return (
     <AppLayout
       title="Zonas / Anexos"

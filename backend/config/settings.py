@@ -128,8 +128,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://192.168.213.1:8080/",
+    "http://localhost:8080",
 ]
 
 AUTH_USER_MODEL = "usuarios.Usuario"

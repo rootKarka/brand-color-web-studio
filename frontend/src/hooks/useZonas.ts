@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
-
-import { getZonas } from "@/services/zonas";
+import { useQuery } from "@tanstack/react-query";
+import { zonaService } from "@/services/zonaService";
 
 export function useZonas() {
-
-    const [zonas, setZonas] = useState([]);
-
-    const cargar = async () => {
-        const data = await getZonas();
-        setZonas(data);
-    };
-
-    useEffect(() => {
-        cargar();
-    }, []);
-
-    return {
-        zonas,
-        cargar,
-    };
+  return useQuery({
+    queryKey: ["zonas"],
+    queryFn: zonaService.getAll,
+  });
 }
