@@ -7,10 +7,13 @@ export interface Zona {
 }
 
 export const zonaService = {
-
     async getAll(): Promise<Zona[]> {
         const { data } = await api.get("/zonas/");
-        return data;
+        
+        // Si data ya es un arreglo, lo devuelve.
+        // Si no, busca 'results' o 'data' interno. Si no existe ninguno, devuelve []
+        if (Array.isArray(data)) return data;
+        return data.results ?? data.data ?? [];
     },
 
     async create(nombre: string): Promise<Zona> {
@@ -18,7 +21,6 @@ export const zonaService = {
             nombre,
         });
 
-        return data;
+        return data.data ?? data;
     },
-
 };

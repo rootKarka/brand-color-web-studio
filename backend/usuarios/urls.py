@@ -1,12 +1,13 @@
 from rest_framework.routers import DefaultRouter
-from .views import ZonaViewSet
+
+from usuarios.views.jefe_viewset import JefeViewSet
 
 router = DefaultRouter()
 
 router.register(
-    r"",
-    ZonaViewSet,
-    basename="zonas"
+    "jefes",
+    JefeViewSet,
+    basename="jefes",
 )
 
 urlpatterns = router.urls

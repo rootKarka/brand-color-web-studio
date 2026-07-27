@@ -28,6 +28,7 @@ export const jefes: Jefe[] = [
   { id: "j6", nombre: "Ana Torres Guzmán", dni: "44562891", zona: "Churín", estado: "activo", ultimoIngreso: "Hoy, 07:58" },
   { id: "j7", nombre: "Pedro Silva Ramos", dni: "46781203", zona: "Cartavio", estado: "activo", ultimoIngreso: "Hoy, 09:33" },
   { id: "j8", nombre: "Elena Vega Chávez", dni: "41029384", zona: "Casa Grande", estado: "activo", ultimoIngreso: "Hoy, 08:15" },
+  { id: "j9", nombre: "Efrain Montalvo Sosa", dni: "444252573", zona: "Casa Grande", estado: "activo", ultimoIngreso: "Ayer a las que te importa"},
 ];
 
 export type Evento = {

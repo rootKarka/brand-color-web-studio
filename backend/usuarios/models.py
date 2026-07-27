@@ -1,9 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from common.models import ActiveModel
+from common.models import ActiveModel, BaseModel
 
 from django.conf import settings
-from common.models import BaseModel
 from common.choices import RolUsuario
 
 
@@ -43,6 +42,11 @@ class Usuario(AbstractUser, BaseModel):
     last_name = models.CharField(
         "Apellidos",
         max_length=100
+    )
+    
+    debe_cambiar_password = models.BooleanField(
+        default=True,
+        verbose_name="Debe cambiar contraseña"
     )
 
     class Meta:
