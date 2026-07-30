@@ -1,5 +1,5 @@
 from rest_framework import status
-from rest_framework.response import Response
+from common.responses import ApiResponse
 from rest_framework.viewsets import ModelViewSet
 
 from common.choices import RolUsuario
@@ -29,19 +29,6 @@ class JefeViewSet(ModelViewSet):
             .order_by("first_name", "last_name")
         )
 
-    def get_serializer_class(self):
-
-        if self.action == "create":
-            return JefeCreateSerializer
-
-        if self.action == "retrieve":
-            return JefeDetailSerializer
-
-        if self.action in ["update", "partial_update"]:
-            return JefeUpdateSerializer
-
-        return JefeListSerializer
-
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -49,17 +36,13 @@ class JefeViewSet(ModelViewSet):
         resultado = JefeService.crear_jefe(serializer.validated_data)
 
         response = JefeCreateResponseSerializer(
-            {
-                "message": "Jefe de Anexo creado correctamente.",
-                "password_temporal": resultado["password_temporal"],
-                "usuario": resultado["usuario"],
-            },
+            resultado,
             context=self.get_serializer_context(),
         )
 
-        return Response(
+        return ApiResponse.created(
             response.data,
-            status=status.HTTP_201_CREATED,
+            message="Jefe de Anexo creado correctamente."
         )
 
     def partial_update(self, request, *args, **kwargs):
@@ -87,20 +70,10 @@ class JefeViewSet(ModelViewSet):
             context=self.get_serializer_context(),
         )
 
-        return Response(
+        return ApiResponse.ok(
             response.data,
-            status=status.HTTP_200_OK,
+            message="Jefe actualizado correctamente."
         )
-
-    def get_serializer_class(self):
-
-        if self.action == "create":
-            return JefeCreateSerializer
-
-        if self.action == "retrieve":
-            return JefeDetailSerializer
-
-        return JefeListSerializer
 
     def get_serializer_class(self):
 

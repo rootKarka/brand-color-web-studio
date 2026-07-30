@@ -1,10 +1,6 @@
 import api from "@/lib/api";
 
-export interface Zona {
-    id: number;
-    nombre: string;
-    is_active: boolean;
-}
+import type { Zona } from "@/types/zona";
 
 export const zonaService = {
     async getAll(): Promise<Zona[]> {
