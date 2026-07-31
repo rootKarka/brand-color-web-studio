@@ -1,4 +1,3 @@
-from rest_framework import status
 from common.responses import ApiResponse
 from rest_framework.viewsets import ModelViewSet
 
@@ -87,3 +86,21 @@ class JefeViewSet(ModelViewSet):
             return JefeUpdateSerializer
 
         return JefeListSerializer
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        serializer = self.get_serializer(
+            queryset,
+            many=True,
+        )
+
+        return ApiResponse.ok(serializer.data)
+
+
+    def retrieve(self, request, *args, **kwargs):
+        usuario = self.get_object()
+
+        serializer = self.get_serializer(usuario)
+
+        return ApiResponse.ok(serializer.data)

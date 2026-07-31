@@ -17,10 +17,7 @@ class ApiResponse:
         if message:
             payload["message"] = message
 
-        return Response(
-            payload,
-            status=status.HTTP_200_OK,
-        )
+        return Response(payload, status=status.HTTP_200_OK)
 
     @staticmethod
     def created(data=None, message=None):
@@ -32,16 +29,11 @@ class ApiResponse:
         if message:
             payload["message"] = message
 
-        return Response(
-            payload,
-            status=status.HTTP_201_CREATED,
-        )
+        return Response(payload, status=status.HTTP_201_CREATED)
 
     @staticmethod
     def no_content():
-        return Response(
-            status=status.HTTP_204_NO_CONTENT,
-        )
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     @staticmethod
     def bad_request(message):
@@ -52,22 +44,3 @@ class ApiResponse:
             },
             status=status.HTTP_400_BAD_REQUEST,
         )
-
-    def list(self, request, *args, **kwargs):
-
-        queryset = self.filter_queryset(self.get_queryset())
-
-        serializer = self.get_serializer(
-            queryset,
-            many=True,
-        )
-
-        return ApiResponse.ok(serializer.data)
-
-    def retrieve(self, request, *args, **kwargs):
-
-        usuario = self.get_object()
-
-        serializer = self.get_serializer(usuario)
-
-        return ApiResponse.ok(serializer.data)
