@@ -36,7 +36,7 @@ class Evento(ActiveModel):
     estado = models.CharField(
         max_length=20,
         choices=EstadoEvento.choices,
-        default=EstadoEvento.ACTIVO
+        default=EstadoEvento.BORRADOR,
     )
 
     class Meta:

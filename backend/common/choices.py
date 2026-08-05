@@ -9,6 +9,7 @@ class RolUsuario(models.TextChoices):
 class EstadoEvento(models.TextChoices):
     ACTIVO = "ACTIVO", "Activo"
     CERRADO = "CERRADO", "Cerrado"
+    BORRADOR = "BORRADOR", "Borrador"
 
 
 class TipoEvento(models.TextChoices):
